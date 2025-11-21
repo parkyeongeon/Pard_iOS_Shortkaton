@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5175A6F72ED0E46500752E96 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5175A6F52ED0E45E00752E96 /* .gitignore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		5175A6E72ED0D71A00752E96 /* OngiLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OngiLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5175A6F52ED0E45E00752E96 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -34,6 +39,7 @@
 			children = (
 				5175A6E92ED0D71A00752E96 /* OngiLog */,
 				5175A6E82ED0D71A00752E96 /* Products */,
+				5175A6F52ED0E45E00752E96 /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5175A6F72ED0E46500752E96 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

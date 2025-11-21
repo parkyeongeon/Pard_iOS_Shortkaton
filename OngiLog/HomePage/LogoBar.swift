@@ -1,15 +1,22 @@
-//
-//  LogoBar.swift
-//  OngiLog
-//
-//  Created by Taemin KIM on 11/22/25.
-//
-
 import SwiftUI
 
 struct LogoBar: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+            VStack {
+                ZStack {
+                    HStack {
+                        Text("로고")
+                            .foregroundStyle(Color.blue)
+                            .frame(width: 45, height: 45)
+                            .clipShape(Circle())
+                            .font(.system(size: 25))
+                        Spacer()
+                    }
+                    
+                }
+        }
+        
     }
 }
 

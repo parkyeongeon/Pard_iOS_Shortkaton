@@ -1,21 +1,45 @@
+////
+////  ContentView.swift
+////  OngiLog
+////
+////  Created by Taemin KIM on 11/22/25.
+////
 //
-//  ContentView.swift
-//  OngiLog
+//import SwiftUI
 //
-//  Created by Taemin KIM on 11/22/25.
+//struct ContentView: View {
+//    var body: some View {
+//        VStack {
+//            HomeView()
+//        }
+//        .padding()
+//    }
+//}
 //
+//#Preview {
+//    ContentView()
+//}
 
 import SwiftUI
 
 struct ContentView: View {
+    @State private var searchText = ""
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            Color.white
+            .ignoresSafeArea()
+            
+            VStack {
+                LogoBar()
+                
+                SearchBar(text: $searchText)
+                    
+                
+                Spacer()
+            }
         }
-        .padding()
+        .padding(.horizontal, 20)
     }
 }
 

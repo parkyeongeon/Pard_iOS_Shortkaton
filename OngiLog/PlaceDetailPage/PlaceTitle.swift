@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct PlaceTitle: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
 
-#Preview {
-    PlaceTitle()
+    let place: Place
+
+    var body: some View {
+        VStack(spacing: 12) {
+            Image(place.image)
+                .resizable()
+                .scaledToFit()
+                .frame(height: 180)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+
+            Text(place.name)
+                .font(.largeTitle)
+                .bold()
+        }
+        .frame(maxWidth: .infinity)
+    }
 }

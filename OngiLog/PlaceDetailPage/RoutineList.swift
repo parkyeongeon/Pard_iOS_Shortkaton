@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct RoutineList: View {
+
+    @State var routines: [RoutineStep]
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 16) {
+            ForEach($routines) { $step in
+                RoutineCell(step: $step)
+            }
+        }
     }
 }
 
+
 #Preview {
-    RoutineList()
+    RoutineList(routines: MockData.kitchen.routines)
+        .previewLayout(.sizeThatFits)
+        .padding()
 }
