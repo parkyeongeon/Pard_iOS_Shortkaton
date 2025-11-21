@@ -11,7 +11,7 @@ struct Supplies: View {
 
             Spacer()
 
-            Text(supplies.map { $0.name }.joined(separator: ", "))
+            Text(supplies.map { $0.supplyName }.joined(separator: ", "))
                 .foregroundColor(Color.blue.opacity(0.8))
         }
         .padding()
@@ -20,6 +20,3 @@ struct Supplies: View {
     }
 }
 
-#Preview {
-    Supplies(supplies: MockData.kitchen.supplies)
-}

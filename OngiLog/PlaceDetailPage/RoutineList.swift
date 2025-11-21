@@ -20,9 +20,3 @@ struct RoutineList: View {
     }
 }
 
-
-#Preview {
-    RoutineList(routines: MockData.kitchen.routines)
-        .previewLayout(.sizeThatFits)
-        .padding()
-}

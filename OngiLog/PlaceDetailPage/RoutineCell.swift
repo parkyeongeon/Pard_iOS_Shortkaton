@@ -4,27 +4,34 @@ struct RoutineCell: View {
     @Binding var step: RoutineStep
 
     var body: some View {
-
         VStack(spacing: 16) {
 
-            // 카드 안내 문구
-            Text(step.isCompleted ? "완료" : "카드를 탭하여 완료로 표시")
+            // 안내 문구
+            Text(step.isComplete ? "완료!" : "카드를 탭하여 완료 처리")
                 .font(.headline)
-                .foregroundColor(.blue)
+                .foregroundColor(step.isComplete ? .gray : .blue)
                 .padding(.top, 16)
 
-            // 이미지 영역
-            Rectangle()
-                .fill(Color.gray.opacity(0.3))
-                .frame(height: 200)
-                .cornerRadius(16)
+            // 이미지
+            ZStack {
+                Image(step.routineImage)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 200)
+                    .clipped()
+
+                Rectangle()
+                    .fill(Color.gray.opacity(0.3))
+                    .frame(height: 200)
+                    .cornerRadius(16)
+            }
 
             // 제목
             Text(step.title)
                 .font(.title2)
                 .bold()
 
-            // 내용
+            // 설명
             Text(step.description)
                 .foregroundColor(.gray)
 
@@ -35,19 +42,12 @@ struct RoutineCell: View {
         .frame(height: 350)
         .background(
             RoundedRectangle(cornerRadius: 22)
-                .fill(Color.white)
+                .fill(step.isComplete ? Color(white: 0.92) : Color.white)   // ⭐ 터치하면 카드 전체 회색
                 .shadow(radius: 4)
         )
-        .opacity(step.isCompleted ? 0.5 : 1.0)
-        .contentShape(Rectangle())      // 🔥 터치 영역을 전체로 확장
+        .animation(.easeInOut(duration: 0.25), value: step.isComplete)     // ⭐ 부드러운 색 변화
         .onTapGesture {
-            step.isCompleted.toggle()
+            step.isComplete.toggle()
         }
     }
-}
-
-#Preview {
-    RoutineCell(step: .constant(MockData.kitchen.routines[0]))
-        .previewLayout(.sizeThatFits)
-        .padding()
 }

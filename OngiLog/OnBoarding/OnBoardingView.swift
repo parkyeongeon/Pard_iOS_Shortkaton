@@ -1,10 +1,3 @@
-//
-//  OnBoarding.swift
-//  OngiLog
-//
-//  Created by Taemin KIM on 11/22/25.
-//
-
 import SwiftUI
 
 struct OnBoarding: View {
@@ -13,6 +6,10 @@ struct OnBoarding: View {
 
     var body: some View {
         ZStack {
+
+            Color(red: 95/255, green: 148/255, blue: 240/255)
+                .ignoresSafeArea()
+
             if navigate {
                 HomeView()
             } else {
@@ -24,15 +21,6 @@ struct OnBoarding: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100)
-
-//                    Text("온기록")
-//                        .font(.largeTitle)
-//                        .bold()
-
-//                    Text("오늘의 청소 루틴을\n손쉽게 기록하고 시작해보세요")
-//                        .font(.body)
-//                        .foregroundColor(.gray)
-//                        .multilineTextAlignment(.center)
 
                     Spacer()
                 }

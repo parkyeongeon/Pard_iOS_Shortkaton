@@ -1,73 +1,42 @@
-//
-//  PlaceSelection.swift
-//  OngiLog
-//
-//  Created by Taemin KIM on 11/22/25.
-//
-
 import SwiftUI
 
 struct PlaceSelection: View {
 
-    let places = MockData.placeList
+    let places: [PlaceSummary]
 
     var body: some View {
 
         ScrollView {
             VStack(spacing: 20) {
 
-                ForEach(places) { place in
+                // 첫 2개 → Large 카드
+                ForEach(places.prefix(2)) { place in
                     NavigationLink {
-                        PlaceDetailPageView(place: place)
+                        PlaceDetailLoaderView(placeId: place.placeId)
                     } label: {
-                        if(place.id == 1 || place.id == 2){
-                            ZStack {
-                                Rectangle()
-                                    .fill(Color.white)
-                                    .frame(width: 329, height: 159.5)
-                                    .cornerRadius(12)
-                                    .shadow(color: Color.black.opacity(0.2),
-                                            radius: 5,
-                                            x: 0, y: 2)
+                        LargePlaceCard(place: place)
+                    }
+                }
 
-                                VStack {
-                                    Spacer()
-                                    Text(place.name)
-                                        .font(.system(size: 20))
-                                        .bold()
-                                    HStack {
-                                        Text("#거실 #대청소")
-                                    }
-                                    .padding()
-                                }
+                // 나머지 → Small 카드 2개씩 나누기
+                let smallPlaces = Array(places.dropFirst(2))
+
+                ForEach(smallPlaces.chunked(into: 2), id: \.self) { row in
+                    HStack(spacing: 15) {
+
+                        // 🚀 핵심 수정: id: \.placeId 추가!
+                        ForEach(row, id: \.placeId) { place in
+                            NavigationLink {
+                                PlaceDetailLoaderView(placeId: place.placeId)
+                            } label: {
+                                SmallPlaceCard(place: place)
                             }
-
-                            
                         }
-                        else {
-                            HStack {
-                                ZStack {
-                                    Rectangle()
-                                        .fill(.white)
-                                        .border(.blue.opacity(0.3))
-                                        .frame(width: 157, height: 160)
-                                        .cornerRadius(12)
-                                    VStack() {
-                                        Text(place.name)
-                                    }
-                                }
-                                ZStack {
-                                    Rectangle()
-                                        .fill(.white)
-                                        .border(.blue.opacity(0.3))
-                                        .frame(width: 157, height: 160)
-                                        .cornerRadius(12)
-                                    VStack() {
-                                        Text(place.name)
-                                    }
-                                }
-                            }
-                            
+
+                        // 홀수 개면 빈 박스 하나 넣기
+                        if row.count == 1 {
+                            Color.clear
+                                .frame(width: 157, height: 160)
                         }
                     }
                 }
@@ -78,7 +47,10 @@ struct PlaceSelection: View {
     }
 }
 
-
-#Preview {
-    PlaceSelection()
+extension Array {
+    func chunked(into size: Int) -> [[Element]] {
+        stride(from: 0, to: count, by: size).map {
+            Array(self[$0..<Swift.min($0 + size, count)])
+        }
+    }
 }

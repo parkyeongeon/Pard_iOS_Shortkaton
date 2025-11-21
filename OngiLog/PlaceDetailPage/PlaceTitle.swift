@@ -9,17 +9,17 @@ import SwiftUI
 
 struct PlaceTitle: View {
 
-    let place: Place
+    let place: PlaceSummary
 
     var body: some View {
         VStack(spacing: 12) {
-            Image(place.image)
+            Image(place.placeImage)
                 .resizable()
                 .scaledToFit()
                 .frame(height: 180)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
 
-            Text(place.name)
+            Text(place.placeName)
                 .font(.largeTitle)
                 .bold()
         }

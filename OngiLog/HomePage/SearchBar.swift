@@ -9,7 +9,7 @@ struct SearchBar: View {
 
                 if text.isEmpty {
                     Text("검색어를 입력하세요.")
-                        .foregroundColor(Color.blue.opacity(0.7))
+                        .foregroundColor(Color(red: 95/255, green: 148/255, blue: 240/255))
                         .padding()
                         .font(.system(size: 14))
                 }
@@ -22,7 +22,7 @@ struct SearchBar: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 17, height: 17)
-                .foregroundColor(Color.blue.opacity(0.7))
+                .foregroundColor(Color(red: 95/255, green: 148/255, blue: 240/255))
                 .padding(5)
         }
         .padding(.horizontal, 5)
@@ -31,7 +31,7 @@ struct SearchBar: View {
         .cornerRadius(100)
         .overlay(
             RoundedRectangle(cornerRadius: 21)
-                .stroke(Color.blue.opacity(0.7), lineWidth: 1)
+                .stroke(Color(red: 95/255, green: 148/255, blue: 240/255), lineWidth: 1)
         )
         .frame(maxWidth: .infinity)
     }

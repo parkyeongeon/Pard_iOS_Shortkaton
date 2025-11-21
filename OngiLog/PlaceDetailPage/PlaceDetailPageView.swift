@@ -1,23 +1,23 @@
-//
-//  PlaceDetailPageView.swift
-//  OngiLog
-//
-//  Created by Taemin KIM on 11/22/25.
-//
-
 import SwiftUI
 
 struct PlaceDetailPageView: View {
-    let place: Place
-    
+    let place: PlaceDetail
+
     var body: some View {
         ScrollView {
-            PlaceTitle(place: place)
-            RoutineList(routines: place.routines)
+            VStack(spacing: 20) {
+                Supplies(supplies: place.supplies)
+                RoutineList(routines: place.routines)
+            }
+            .padding()
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text(place.placeName)
+                    .font(.system(size: 24, weight: .bold))  // ← 글씨 크기 조절
+                    .foregroundColor(.black)
+            }
         }
     }
-}
-
-#Preview {
-    PlaceDetailPageView(place: MockData.kitchen)
 }
