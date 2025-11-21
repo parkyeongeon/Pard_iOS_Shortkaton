@@ -1,18 +1,25 @@
-//
-//  Supplies.swift
-//  OngiLog
-//
-//  Created by Taemin KIM on 11/22/25.
-//
-
 import SwiftUI
 
 struct Supplies: View {
+    let supplies: [Supply]
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text("필요한 물품")
+                .foregroundColor(Color.blue.opacity(0.8))
+                .fontWeight(.semibold)
+
+            Spacer()
+
+            Text(supplies.map { $0.name }.joined(separator: ", "))
+                .foregroundColor(Color.blue.opacity(0.8))
+        }
+        .padding()
+        .background(Color.blue.opacity(0.1))
+        .cornerRadius(15)
     }
 }
 
 #Preview {
-    Supplies()
+    Supplies(supplies: MockData.kitchen.supplies)
 }

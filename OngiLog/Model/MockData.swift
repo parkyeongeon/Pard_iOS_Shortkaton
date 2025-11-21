@@ -11,7 +11,7 @@ struct MockData {
 
     static let kitchen = Place(
         id: 1,
-        name: "부엌",
+        name: "거실 대청소!",
         image: "kitchen_thumbnail",
         supplies: [
             Supply(id: 1, name: "고무장갑", placeId: 1),
@@ -42,7 +42,37 @@ struct MockData {
 
     static let room = Place(
         id: 2,
-        name: "방",
+        name: "화장실 대청소!",
+        image: "room_thumbnail",
+        supplies: [
+            Supply(id: 4, name: "청소기", placeId: 2),
+            Supply(id: 5, name: "먼지털이", placeId: 2)
+        ],
+        routines: [
+            RoutineStep(
+                id: 3,
+                orderIndex: 1,
+                title: "바닥 정리",
+                description: "바닥에 있는 물건부터 제자리에 정리해요.",
+                imageName: "room_step1",
+                isCompleted: false,
+                placeId: 2
+            ),
+            RoutineStep(
+                id: 4,
+                orderIndex: 2,
+                title: "책상 정리",
+                description: "메인 물건부터 치워요.",
+                imageName: "room_step2",
+                isCompleted: false,
+                placeId: 2
+            )
+        ]
+    )
+    
+    static let toilet = Place(
+        id: 3,
+        name: "변기 청소",
         image: "room_thumbnail",
         supplies: [
             Supply(id: 4, name: "청소기", placeId: 2),
@@ -72,7 +102,8 @@ struct MockData {
 
     static let placeList: [Place] = [
         kitchen,
-        room
+        room,
+        toilet
     ]
 }
 

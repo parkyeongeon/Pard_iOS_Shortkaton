@@ -11,8 +11,10 @@ struct PlaceDetailPageView: View {
     let place: Place
     
     var body: some View {
-        PlaceTitle(place: place)
-        RoutineList(routines: place.routines)
+        ScrollView {
+            PlaceTitle(place: place)
+            RoutineList(routines: place.routines)
+        }
     }
 }
 
