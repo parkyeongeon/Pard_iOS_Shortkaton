@@ -23,3 +23,5 @@ Podfile.lock
 
 # Carthage (if used)
 Carthage/Build/
+
+BaseURL.swift
